@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "IM Fell English SC", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "IM Fell English", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+  --color-ink: #24141a;
+  --color-ink-soft: #5b3f3a;
+  --color-night: #1c0d12;
+  --color-wine: #7a1f2b;
+  --color-wine-deep: #4e111b;
+  --color-gold: #c9982f;
+  --color-gold-bright: #f0cf73;
+  --color-parchment: #f1e2bf;
+  --color-parchment-deep: #dcc594;
+  --color-lapis: #27456f;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background-color: #1c0d12;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 152, 47, 0.16), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(240, 207, 115, 0.035) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(-45deg, rgba(240, 207, 115, 0.035) 0 2px, transparent 2px 22px);
+  color: #24141a;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ---------- Superficies ---------- */
+
+.parchment {
+  background-color: #f1e2bf;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 250, 230, 0.75), transparent 55%),
+    radial-gradient(ellipse at 85% 95%, rgba(150, 100, 40, 0.28), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(150, 100, 40, 0.2), transparent 45%);
+  box-shadow:
+    0 0 0 1px #8a6a2a,
+    0 0 0 4px #f1e2bf,
+    0 0 0 5px #8a6a2a,
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 40px rgba(120, 80, 30, 0.25);
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #a8843a transparent;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #a8843a;
+  border-radius: 3px;
+}
+
+/* ---------- Botones ---------- */
+
+.btn-seal {
+  position: relative;
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  color: #fff3d6;
+  background: linear-gradient(180deg, #a12a39 0%, #7a1f2b 55%, #5c1520 100%);
+  border: 1px solid #3d0c14;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 180, 0.45),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.25),
+    0 4px 0 #3d0c14,
+    0 10px 18px rgba(60, 10, 20, 0.35);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.15s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btn-seal:hover {
+  filter: brightness(1.1);
+}
+.btn-seal:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 180, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+    0 1px 0 #3d0c14,
+    0 3px 8px rgba(60, 10, 20, 0.35);
+}
+.btn-seal:focus-visible,
+.btn-ghost:focus-visible,
+.icon-btn:focus-visible {
+  outline: 3px solid #27456f;
+  outline-offset: 3px;
+}
+
+.btn-ghost {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  color: #4e111b;
+  background: rgba(255, 248, 225, 0.55);
+  border: 1px solid #8a6a2a;
+  border-radius: 10px;
+  box-shadow: 0 2px 0 rgba(138, 106, 42, 0.7);
+  transition:
+    transform 0.08s ease,
+    background 0.15s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btn-ghost:hover {
+  background: rgba(255, 248, 225, 0.95);
+}
+.btn-ghost:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 rgba(138, 106, 42, 0.7);
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  color: #4e111b;
+  background: rgba(255, 246, 220, 0.82);
+  border: 1px solid #8a6a2a;
+  box-shadow:
+    0 2px 0 rgba(138, 106, 42, 0.8),
+    0 6px 12px rgba(60, 30, 10, 0.2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.08s ease;
+}
+.icon-btn:active {
+  transform: translateY(2px) scale(0.96);
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes card-in {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.94) rotate(-1.2deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01) rotate(0.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-140%) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(8%) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(-60%) scale(0.96);
+  }
+}
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(3deg);
+  }
+}
+@keyframes pulse-cta {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(2.6) rotate(-18deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-7deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-7deg);
+  }
+}
+@keyframes count-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.anim-overlay {
+  animation: overlay-in 0.22s ease both;
+}
+.anim-card {
+  animation: card-in 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+}
+.anim-toast-in {
+  animation: toast-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+}
+.anim-toast-out {
+  animation: toast-out 0.3s ease forwards;
+}
+.anim-float {
+  animation: float-soft 3.6s ease-in-out infinite;
+}
+.anim-cta {
+  animation: pulse-cta 1.5s ease-in-out infinite;
+}
+.anim-stamp {
+  animation: stamp-in 0.4s 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.anim-pop {
+  animation: count-pop 0.5s 0.1s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-cta {
+    animation: none;
+  }
+}
