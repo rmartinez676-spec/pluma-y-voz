@@ -1,19 +1,18 @@
 import type { StageTheme } from "./data";
-import bgSalamanca from "../assets/bg-salamanca.jpg";
-import bgAvila from "../assets/bg-avila.jpg";
-import bgMar from "../assets/bg-mar.jpg";
-import bgCorral from "../assets/bg-corral.jpg";
-import bgIndice from "../assets/bg-indice.jpg";
-import bgMap from "../assets/bg-map.jpg";
 
-export const MAP_BG_URL = bgMap;
+function publicUrl(relPath: string): string {
+  const base = (import.meta.env?.BASE_URL ?? "/").replace(/\/?$/, "/");
+  return `${base}${relPath.replace(/^\/+/, "")}`;
+}
+
+export const MAP_BG_URL = publicUrl("images/bg-map.jpg");
 
 export const STAGE_BG_URLS: Record<StageTheme, string> = {
-  salamanca: bgSalamanca,
-  avila: bgAvila,
-  mar: bgMar,
-  corral: bgCorral,
-  indice: bgIndice,
+  salamanca: publicUrl("images/bg-salamanca.jpg"),
+  avila: publicUrl("images/bg-avila.jpg"),
+  mar: publicUrl("images/bg-mar.jpg"),
+  corral: publicUrl("images/bg-corral.jpg"),
+  indice: publicUrl("images/bg-indice.jpg"),
 };
 
 const cache = new Map<StageTheme, HTMLImageElement>();
